@@ -10,6 +10,10 @@
   display: none;
 }
 
+/* .desktop-menu {
+  display: none;
+} */
+
 .header-hidden {
   top: -100%;
 }
@@ -28,22 +32,17 @@
   align-items: center;
   justify-content: center;
   padding-top: 24px;
-  flex-direction: column;
+  flex-direction: row;
   position: relative;
+  z-index: 103;
 }
 
 .logo-typeface {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   height: none;
   width: 80%;
   z-index: 100;
-}
-
-#page-title {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 }
 
 #burger-menu {
@@ -55,11 +54,97 @@
   right: 24px;
   align-items: center;
   justify-content: center;
+  z-index: 101;
+  left: calc(50% + 140px);
 }
 
 #burger-menu img {
   display: flex;
   width: 20px;
+}
+
+#mobile-menu {
+  position: fixed;
+  display: flex;
+  top: 0;
+  right: -80%; /* start off the screen */
+  width: 80%;
+  height: 100%;
+  background-color: rgba(25, 25, 25, 0.95);
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  align-items: column;
+  justify-content: center;
+  transition: right 0.5s ease-in-out;
+  transform: translateX(100%);
+}
+
+#mobile-menu.active {
+  transform: translateX(20%);
+}
+
+#mobile-menu a {
+  padding: 15px;
+  pointer-events: auto;
+  color: white;
+  text-decoration: none;
+  justify-content: center;
+  display: block;
+  text-align: center;
+  font-family: Gotham;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  z-index: 120;
+}
+
+.buttons-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center the children elements vertically */
+  width: 100%; /* Ensure it takes the full width of its parent */
+  max-width: 50%; /* You can adjust this value as needed */
+  /* text-align: right; */
+  align-self: center;
+  gap: 40px;
+}
+
+#mobile-menu.active {
+  left: 0; /* This brings the menu onto the screen */
+}
+
+#mobile-menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#mobile-menu ul li {
+  padding: 15px;
+  border-bottom: 1px solid #444;
+}
+
+#mobile-menu ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+}
+
+.buttons-wrapper a {
+  text-align: right !important;
+}
+
+#copyright {
+  position: relative; /* Fixed position */
+  left: 0; /* Align left */
+  bottom: 0; /* Align bottom */
+  color: white;
+  font-family: Gotham;
+  font-weight: 400;
+  font-size: 12px;
+  z-index: 100;
+  margin-top: 40px;
+  margin-left: 100px;
 }
 
 .content-area {
@@ -163,4 +248,14 @@
   border-radius: 4px;
   overflow: hidden;
   /* pointer-events: none; */
+}
+
+@media (min-width: 1025px) {
+  /* .desktop-menu {
+    justify-content: row;
+  } */
+
+  #burger-menu {
+    display: none;
+  }
 }
